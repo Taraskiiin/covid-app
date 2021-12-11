@@ -1,7 +1,7 @@
 import React from "react";
 
-import logo from "../assets/logo.png";
-import { SearchIcon } from "../assets/icons";
+import logo from "../../assets/logo.png";
+import SearchBlock from "../SearchBlock/SearchBlock";
 
 import "./header.scss";
 
@@ -14,17 +14,7 @@ const Header = () => {
             <img width={200} height={200} src={logo} alt="logo" />
             <span className="link_text">STATISTIC</span>
           </a>
-          <label className="search-label">
-            <input
-              className="search-input"
-              type="search"
-              id="site-search"
-              name="q"
-              aria-label="Search through site content"
-              placeholder="Search..."
-            />
-            <SearchIcon />
-          </label>
+          <SearchBlock />
         </div>
       </div>
     </header>
