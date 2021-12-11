@@ -6,6 +6,8 @@ import { ISummaryObject } from "../../interface";
 
 import TableRow from "../TableRow/TableRow";
 
+import "./statisticTable.scss";
+
 const StatisticTable: React.FC = () => {
   const [data, setData] = useState<ISummaryObject[]>([]);
 
@@ -23,15 +25,15 @@ const StatisticTable: React.FC = () => {
       <div className="table-header table-row">
         <p>№</p>
         <p>Country</p>
-        <p>Total</p>
-        {data ? (
-          data.map((el, index) => (
-            <TableRow key={el.ID} number={index} data={el} />
-          ))
-        ) : (
-          <ScaleLoader color={"#2196F3"} />
-        )}
+        <p>Total Confirmed</p>
       </div>
+      {data ? (
+        data.map((el, index) => (
+          <TableRow key={el.ID} number={index + 1} data={el} />
+        ))
+      ) : (
+        <ScaleLoader color={"#2196F3"} />
+      )}
     </main>
   );
 };
