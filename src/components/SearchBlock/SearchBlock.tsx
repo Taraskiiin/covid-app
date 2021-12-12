@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import { SearchIcon } from "../../assets/icons";
 
+import { useDispatch } from "react-redux";
+
 import "./searchBlock.scss";
 
 const SearchBlock = () => {
+  const dispatch = useDispatch();
+  const searchThis = (string: string) => {
+    dispatch({
+      type: "SEARCH",
+      payload: string,
+    });
+  };
   return (
     <label className="search-label">
       <input
@@ -13,7 +22,7 @@ const SearchBlock = () => {
         name="q"
         aria-label="Search through site content"
         placeholder="Search..."
-        // onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => searchThis(e.target.value)}
       />
       <SearchIcon />
     </label>
