@@ -21,7 +21,7 @@ const StatisticTable: React.FC = () => {
   }, []);
 
   return (
-    <main className="wrapper">
+    <>
       <div className="table-header table-row">
         <p>№</p>
         <p>Country</p>
@@ -34,7 +34,7 @@ const StatisticTable: React.FC = () => {
       ) : (
         <ScaleLoader color={"#2196F3"} />
       )}
-    </main>
+    </>
   );
 };
 
