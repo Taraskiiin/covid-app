@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { ISummaryObject } from "../../interface";
+
+import { useDispatch } from "react-redux";
 
 import "../StatisticTable/statisticTable.scss";
 import PopUp from "../PopUp/PopUp";
 
 interface IStatisticRow {
-  setOpen: (value: boolean) => void;
   number: number;
   data: ISummaryObject;
 }
 
-const TableRow: React.FC<IStatisticRow> = ({ number, data, setOpen }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    setOpen(isOpen);
-  }, [isOpen]);
+const TableRow: React.FC<IStatisticRow> = ({ number, data }) => {
+  const dispatch = useDispatch();
+  const makeActive = () => {
+    dispatch({
+      type: "MAKE_ACTIVE",
+      payload: data.ID,
+    });
+  };
   return (
     <>
-      <div className="table-row" onClick={() => setIsOpen(true)}>
+      <div className="table-row" onClick={() => makeActive()}>
         <p>{number}</p>
         <p>{data.Country}</p>
         <p>{data.TotalConfirmed}</p>
       </div>
-      <PopUp data={data} isOpen={isOpen} onClick={() => setIsOpen(false)} />
+      <PopUp data={data} />
     </>
   );
 };

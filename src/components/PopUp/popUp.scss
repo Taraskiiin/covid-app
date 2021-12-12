@@ -26,7 +26,7 @@
 
   .popUp-row {
     display: grid;
-    grid-template-columns: 50px 1fr 100px;
+    grid-template-columns: 50px 1fr minmax(max-content, 100px);
     height: 40px;
     align-items: center;
     margin-bottom: 36px;

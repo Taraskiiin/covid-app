@@ -2,18 +2,36 @@ import React, { RefObject, useRef } from "react";
 import { HeartIcon, SkullIcon, PagePlusIcon } from "../../assets/icons";
 import { ISummaryObject } from "../../interface";
 
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 import "./popUp.scss";
 
 interface IPopUpProps {
-  isOpen: boolean;
   data: ISummaryObject;
-  onClick: () => void;
 }
 
-const PopUp: React.FC<IPopUpProps> = ({ isOpen, data, onClick }) => {
+const PopUp: React.FC<IPopUpProps> = ({ data }) => {
+  const active = useSelector(
+    (activeId: { active: { activeId: string | null } }) =>
+      activeId.active.activeId
+  );
+  let visible = false;
+  if (active === data.ID) {
+    visible = true;
+  }
+  const dispatch = useDispatch();
+
+  const removeActive = () => {
+    dispatch({
+      type: "REMOVE_ACTIVE",
+      payload: null,
+    });
+  };
+
   return (
     <>
-      {isOpen ? (
+      {visible ? (
         <article className="popUp">
           <h2>{data.Country}</h2>
           <div className="popUp-row">
@@ -31,7 +49,7 @@ const PopUp: React.FC<IPopUpProps> = ({ isOpen, data, onClick }) => {
             <p>Total Recovered</p>
             <p>{data.TotalRecovered}</p>
           </div>
-          <button className="btn-ok" onClick={onClick}>
+          <button className="btn-ok" onClick={removeActive}>
             Ok
           </button>
         </article>
