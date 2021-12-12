@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SearchIcon } from "../../assets/icons";
 
 import "./searchBlock.scss";
@@ -13,6 +13,7 @@ const SearchBlock = () => {
         name="q"
         aria-label="Search through site content"
         placeholder="Search..."
+        // onChange={(e) => setSearch(e.target.value)}
       />
       <SearchIcon />
     </label>

@@ -1,13 +1,18 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import Header from "./components/Header/Header";
 import StatisticTable from "./components/StatisticTable/StatisticTable";
 
+import { useSelector } from "react-redux";
+
 const App = () => {
-  const [isOpen, setOpen] = useState<boolean>(false);
+  const active = useSelector(
+    (activeId: { active: { activeId: string | null } }) =>
+      activeId.active.activeId
+  );
   return (
-    <div className={`wrapper ${isOpen ? "active" : ""}`}>
+    <div className={`wrapper ${active ? "active" : ""}`}>
       <Header />
-      <StatisticTable setOpen={(value: boolean) => setOpen(value)} />
+      <StatisticTable />
     </div>
   );
 };

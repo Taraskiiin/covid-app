@@ -8,11 +8,7 @@ import TableRow from "../TableRow/TableRow";
 
 import "./statisticTable.scss";
 
-interface IStatisticTableProps {
-  setOpen: (value: boolean) => void;
-}
-
-const StatisticTable: React.FC<IStatisticTableProps> = ({ setOpen }) => {
+const StatisticTable: React.FC = () => {
   const [data, setData] = useState<ISummaryObject[]>([]);
 
   useEffect(() => {
@@ -32,12 +28,7 @@ const StatisticTable: React.FC<IStatisticTableProps> = ({ setOpen }) => {
       </div>
       {data ? (
         data.map((el, index) => (
-          <TableRow
-            key={el.ID}
-            number={index + 1}
-            data={el}
-            setOpen={(value: boolean) => setOpen(value)}
-          />
+          <TableRow key={el.ID} number={index + 1} data={el} />
         ))
       ) : (
         <ScaleLoader color={"#2196F3"} />
