@@ -1,0 +1,61 @@
+.popUp {
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  height: 400px;
+  padding: 20px;
+  color: #666666;
+  font-weight: 400;
+  border-radius: 20px;
+  box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  z-index: 99;
+  pointer-events: auto;
+
+  h2 {
+    color: #000;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 38px;
+    font-weight: 700;
+  }
+
+  .popUp-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 100px;
+    height: 40px;
+    align-items: center;
+    margin-bottom: 36px;
+    font-size: 24px;
+
+    > svg {
+      justify-self: center;
+    }
+
+    p {
+      padding: 0 20px;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  .btn-ok {
+    cursor: pointer;
+    width: 171px;
+    height: 49px;
+    border-radius: 20px;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+    background-color: #2196f3;
+    margin: 0 214px;
+  }
+}
