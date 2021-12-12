@@ -1,8 +1,3 @@
-export interface IStatisticRow {
-  number: number;
-  data: ISummaryObject;
-}
-
 export interface ISummaryObject {
   Country: string;
   CountryCode: string;

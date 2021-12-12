@@ -8,6 +8,8 @@
   max-width: 1920px;
   min-height: 100vh;
   margin: 0 auto;
-  display: grid;
   padding: 0 60px 10px;
+}
+.active {
+  pointer-events: none;
 }

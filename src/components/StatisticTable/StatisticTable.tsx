@@ -8,13 +8,16 @@ import TableRow from "../TableRow/TableRow";
 
 import "./statisticTable.scss";
 
-const StatisticTable: React.FC = () => {
+interface IStatisticTableProps {
+  setOpen: (value: boolean) => void;
+}
+
+const StatisticTable: React.FC<IStatisticTableProps> = ({ setOpen }) => {
   const [data, setData] = useState<ISummaryObject[]>([]);
 
   useEffect(() => {
     async function loadData() {
       const response = await axios.get("https://api.covid19api.com/summary");
-      console.log(response.data.Countries);
       setData(response.data.Countries);
     }
     loadData();
@@ -29,7 +32,12 @@ const StatisticTable: React.FC = () => {
       </div>
       {data ? (
         data.map((el, index) => (
-          <TableRow key={el.ID} number={index + 1} data={el} />
+          <TableRow
+            key={el.ID}
+            number={index + 1}
+            data={el}
+            setOpen={(value: boolean) => setOpen(value)}
+          />
         ))
       ) : (
         <ScaleLoader color={"#2196F3"} />

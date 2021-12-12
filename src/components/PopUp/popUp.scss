@@ -1,6 +1,10 @@
 .popUp {
-  align-self: center;
-  justify-self: center;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 600px;
   height: 400px;
   padding: 20px;
@@ -8,6 +12,9 @@
   font-weight: 400;
   border-radius: 20px;
   box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  z-index: 99;
+  pointer-events: auto;
 
   h2 {
     color: #000;

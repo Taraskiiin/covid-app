@@ -1,29 +1,42 @@
-import React from "react";
+import React, { RefObject, useRef } from "react";
 import { HeartIcon, SkullIcon, PagePlusIcon } from "../../assets/icons";
+import { ISummaryObject } from "../../interface";
 
 import "./popUp.scss";
 
-const PopUp = () => {
+interface IPopUpProps {
+  isOpen: boolean;
+  data: ISummaryObject;
+  onClick: () => void;
+}
+
+const PopUp: React.FC<IPopUpProps> = ({ isOpen, data, onClick }) => {
   return (
-    <article className="popUp">
-      <h2>Country</h2>
-      <div className="popUp-row">
-        <HeartIcon />
-        <p>Total Confirmed</p>
-        <p>3</p>
-      </div>
-      <div className="popUp-row">
-        <SkullIcon />
-        <p>Total Deaths</p>
-        <p>3</p>
-      </div>
-      <div className="popUp-row">
-        <PagePlusIcon />
-        <p>Total Recovered</p>
-        <p>3</p>
-      </div>
-      <button className="btn-ok">Ok</button>
-    </article>
+    <>
+      {isOpen ? (
+        <article className="popUp">
+          <h2>{data.Country}</h2>
+          <div className="popUp-row">
+            <HeartIcon />
+            <p>Total Confirmed</p>
+            <p>{data.TotalConfirmed}</p>
+          </div>
+          <div className="popUp-row">
+            <SkullIcon />
+            <p>Total Deaths</p>
+            <p>{data.TotalDeaths}</p>
+          </div>
+          <div className="popUp-row">
+            <PagePlusIcon />
+            <p>Total Recovered</p>
+            <p>{data.TotalRecovered}</p>
+          </div>
+          <button className="btn-ok" onClick={onClick}>
+            Ok
+          </button>
+        </article>
+      ) : null}
+    </>
   );
 };
 

@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Header from "./components/Header/Header";
 import StatisticTable from "./components/StatisticTable/StatisticTable";
-import PopUp from "./components/PopUp/PopUp";
 
 const App = () => {
+  const [isOpen, setOpen] = useState<boolean>(false);
   return (
-    <div className="wrapper">
-      {/* <Header />
-      <StatisticTable /> */}
-      <PopUp />
+    <div className={`wrapper ${isOpen ? "active" : ""}`}>
+      <Header />
+      <StatisticTable setOpen={(value: boolean) => setOpen(value)} />
     </div>
   );
 };
