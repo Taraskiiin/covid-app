@@ -19,3 +19,27 @@
     }
   }
 }
+@media screen and (max-width: 1340px) {
+  .header {
+    height: 80px;
+    padding: 20px 25px 10px 25px;
+
+    .header-link {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .link_text {
+        font-size: 36px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 660px) {
+  .header {
+    height: 200px;
+    flex-direction: column;
+    justify-content: start;
+  }
+}

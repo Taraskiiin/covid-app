@@ -16,7 +16,6 @@ const StatisticTable: React.FC = () => {
   const search = useSelector(
     (store: { search: { search: string } }) => store.search.search
   );
-
   useEffect(() => {
     async function loadData() {
       const response = await axios.get("https://api.covid19api.com/summary");
@@ -25,9 +24,10 @@ const StatisticTable: React.FC = () => {
     loadData();
   }, []);
 
-  const filter = data.filter((country) => {
-    return country.Slug.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-  });
+  const filterBySearch = data.filter((el) =>
+    el.Country.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
       <div className="table-header table-row">
@@ -35,8 +35,8 @@ const StatisticTable: React.FC = () => {
         <p>Country</p>
         <p>Total Confirmed</p>
       </div>
-      {data ? (
-        filter.map((el, index) => (
+      {filterBySearch ? (
+        filterBySearch.map((el, index) => (
           <TableRow key={el.ID} number={index + 1} data={el} />
         ))
       ) : (
