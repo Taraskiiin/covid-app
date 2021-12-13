@@ -28,14 +28,33 @@ const StatisticTable: React.FC = () => {
     el.Country.toLowerCase().includes(search.toLowerCase())
   );
 
+  const sortByTotalConfirmed = () =>
+    !search
+      ? setData(
+          filterBySearch.sort(
+            (a: ISummaryObject, b: ISummaryObject) =>
+              b.TotalConfirmed - a.TotalConfirmed
+          )
+        )
+      : data;
+
+  const sortByCountry = () =>
+    !search
+      ? setData(
+          filterBySearch.sort((a: ISummaryObject, b: ISummaryObject) =>
+            a.Country.localeCompare(b.Country)
+          )
+        )
+      : data;
+
   return (
     <>
       <div className="table-header table-row">
         <p>№</p>
-        <p>Country</p>
-        <p>Total Confirmed</p>
+        <p onClick={sortByCountry}>Country</p>
+        <p onClick={sortByTotalConfirmed}>Total Confirmed</p>
       </div>
-      {filterBySearch ? (
+      {filterBySearch.length ? (
         filterBySearch.map((el, index) => (
           <TableRow key={el.ID} number={index + 1} data={el} />
         ))

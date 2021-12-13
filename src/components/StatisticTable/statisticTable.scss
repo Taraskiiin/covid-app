@@ -38,10 +38,27 @@
   color: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
-
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 980px) {
+  .table-row {
+    p {
+      font-size: 18px;
+    }
+  }
+}
+@media screen and (max-width: 870px) {
   .table-row {
     grid-template-columns: 50px 1fr 1fr;
-    font-size: 18px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .table-row {
+    grid-template-columns: 50px 1fr 0.5fr;
+    height: 40px;
+    line-height: 40px;
+
+    p {
+      border: none;
+      text-align: center;
+    }
   }
 }
